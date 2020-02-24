@@ -3,7 +3,7 @@
 #HOW TO INSTALL PYTHON
 
 sudo apt-get update
-sudo apt-get isnstall python3
+sudo apt-get install python3
 
 #HOW TO INSTALL PIP
 sudo apt update
