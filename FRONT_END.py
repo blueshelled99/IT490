@@ -39,9 +39,6 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 if (__name__ = "__main__"):
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=5000)
 
-#TO LET OTHER USERS ON THE NETWORK VIEW HELLO WORLD ON PORT 5000 LETS SERVER NOW YOU TRUST ALL COMPUTERS ON NETWORK
-
-flask run --host=0.0.0.0
 
