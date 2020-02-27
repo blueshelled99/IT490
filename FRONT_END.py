@@ -1,14 +1,12 @@
-sudo apt-get update
-sudo apt-get install python3
-sudo apt update
-sudo apt install python3-pip
-pip3 --version
-sudo apt-get update 
-sudo apt-get install python-pika
-sudo apt-install vim
-pip install flask
-sudo apt-get update
-sudo apt-get install apache2
+from flask import Flask
+ 
+app = Flask(__name__)
+ 
+@app.route('/hello')
+def helloWorldHandler():
+    return 'Hello World!'
+ 
+app.run(host='0.0.0.0', port= 5000)
 
 
 
