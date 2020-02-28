@@ -18,4 +18,5 @@ cd flask-application
 virtualenv flask-env
 source flask-env/bin/activate
 pip install flask
+python3 hello.py
 
