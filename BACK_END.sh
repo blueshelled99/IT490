@@ -1,10 +1,10 @@
 sudo apt-get update
 sudo apt-get install python3
 sudo apt update
-sudo apt install python3-pip
+sudo apt-get install python3-pip
 pip3 --version
 sudo apt-get update 
-sudo apt-get install python-pika
+sudo python3 -m pip install pika
 sudo apt install vim
 sudo apt-get install mysql-server
 sudo netstat -tap | grep mysql
