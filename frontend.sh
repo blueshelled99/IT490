@@ -10,7 +10,8 @@ sudo apt-install vim
 sudo apt-get update
 sudo apt-get install apache2
 sudo chown -R (username) /var/www
-cd ~
+cd~ 
+sudo apt apt-get install php -y
 sudo apt-get install python3-virtualenv 
 virtualenv --version
 mkdir flask-application
@@ -22,4 +23,8 @@ python3 FRONT_END.py
 deactivate 
 cd~
 cd /var/www/html
+sudo apt-get update -y
+sudo apt-get install -y php-amqplib
+sudo apt-get install -y composer 
+composer require php-amqplib/php-amqplib
 
