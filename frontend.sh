@@ -9,6 +9,7 @@ sudo apt-get install python3-pika
 sudo apt-install vim
 sudo apt-get update
 sudo apt-get install apache2
+sudo chown -R (username) /var/www
 cd ~
 sudo apt-get install python3-virtualenv 
 virtualenv --version
@@ -18,4 +19,7 @@ virtualenv flask-env
 source flask-env/bin/activate
 pip3 install flask
 python3 FRONT_END.py
+deactivate 
+cd~
+cd /var/www/html
 
