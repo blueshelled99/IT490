@@ -12,9 +12,9 @@ sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql.service
 sudo mysql -u root password NOTweak$_@123!
 sudo mysql -u root
-UPDATE user set user = 'backendtest' WHERE user = 'root';
-GRANT ALL PRIVILEGES ON *.* TO 'backendtest';
-FLUSH PRIVILEGES;
+#UPDATE user set user = 'backendtest' WHERE user = 'root';
+#GRANT ALL PRIVILEGES ON *.* TO 'backendtest';
+#FLUSH PRIVILEGES;
 exit
 sudo mysql -u backendtest password NOTweak$_@123!
 sudo mysql -u backendtest -p NOTweak$_@123!
