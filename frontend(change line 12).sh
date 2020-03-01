@@ -9,7 +9,7 @@ sudo apt-get install python3-pika
 sudo apt-install vim
 sudo apt-get update
 sudo apt-get install apache2
-sudo chown -R (username) /var/www
+sudo chown -R (username) /var/www #change the username for the user on the machine
 cd~ 
 sudo apt apt-get install php -y
 sudo apt-get install python3-virtualenv 
