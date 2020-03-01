@@ -18,12 +18,12 @@ FLUSH PRIVILEGES;
 exit
 sudo mysql -u backendtest password NOTweak$_@123!
 sudo mysql -u backendtest -p NOTweak$_@123!
-CREATE USER 'dmztest' IDENTIFIED BY 'YesStrong!321@_$';
-CREATE USER 'rabbitmqtest' IDENTIFIED BY 'Rabbitmq123!';
-GRANT ALL PRIVILEGES ON *.* TO 'dmztest';
-GRANT ALL PRIVILEGES ON *.* TO 'rabbitmqtest';
-FLUSH PRIVILEGES;
-CREATE DATABASE back_end_database;
-USE back_end_database;
-CREATE TABLE DB_members(username VARCHAR(20), password VARCHAR(20));
-CREATE TABLE DB_add(username VARCHAR(20), password VARCHAR(20), firstname VARCHAR(20), lastname VARCHAR(20));
+#CREATE USER 'dmztest' IDENTIFIED BY 'YesStrong!321@_$';
+#CREATE USER 'rabbitmqtest' IDENTIFIED BY 'Rabbitmq123!';
+#GRANT ALL PRIVILEGES ON *.* TO 'dmztest';
+#GRANT ALL PRIVILEGES ON *.* TO 'rabbitmqtest';
+#FLUSH PRIVILEGES;
+#CREATE DATABASE back_end_database;
+#USE back_end_database;
+#CREATE TABLE DB_members(username VARCHAR(20), password VARCHAR(20));
+#CREATE TABLE DB_add(username VARCHAR(20), password VARCHAR(20), firstname VARCHAR(20), lastname VARCHAR(20));
