@@ -15,9 +15,9 @@ sudo mysql -u root
 #UPDATE user set user = 'backendtest' WHERE user = 'root';
 #GRANT ALL PRIVILEGES ON *.* TO 'backendtest';
 #FLUSH PRIVILEGES;
-exit
-sudo mysql -u backendtest password NOTweak$_@123!
-sudo mysql -u backendtest -p NOTweak$_@123!
+#exit
+#sudo mysql -u backendtest password NOTweak$_@123!
+#sudo mysql -u backendtest -p NOTweak$_@123!
 #CREATE USER 'dmztest' IDENTIFIED BY 'YesStrong!321@_$';
 #CREATE USER 'rabbitmqtest' IDENTIFIED BY 'Rabbitmq123!';
 #GRANT ALL PRIVILEGES ON *.* TO 'dmztest';
