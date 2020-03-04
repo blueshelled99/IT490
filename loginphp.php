@@ -70,6 +70,7 @@ class RpcClient
             $this->channel->wait();
         }
         return ($this->response);
+	//return intval($this->response); i think maybe we need to initialize the variable type here?
     }
 }
 
