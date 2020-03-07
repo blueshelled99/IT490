@@ -16,11 +16,11 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
 
-$fname = $_POST['firstname'];
-$lname = $_POST['lastname'];
+$fname = $_POST['firstName'];
+$lname = $_POST['lastName'];
 $email = $_POST['email'];
-$pass = $_POST['password'];
-
+$pass  = $_POST['password'];
+ 
 class RpcClient
 {
     private $connection;
@@ -70,24 +70,28 @@ class RpcClient
     {
         $this->response = null;
         $this->corr_id = uniqid();
-
         $msg = new AMQPMessage(
-            $n,
+	    $n,
             array(
-                'correlation_id' => $this->corr_id,
+               'correlation_id' => $this->corr_id,
                 'reply_to' => $this->callback_queue
             )
         );
-        $this->channel->basic_publish($msg, 'user-test', '');
+        $this->channel->basic_publish($msg, '','user-test');
         while (!$this->response) {
             $this->channel->wait();
         }
+	$this->channel->close();
+	$this->connection->close();
         return ($this->response);
     }
 }
 
+$options = [ 'salt' => 'Nature415SpudFrozen' ];
+$hashed_password = password_hash($pass, PASSWORD_BCRYPT, $options);
+
 $rpc = new RpcClient();
-$response = $rpc->call("$email,$password,$fname,$lname");
+$response = $rpc->call("$email,$hashed_password,$fname,$lname");
 echo $response;
 if ($response == "true"){
     header("Location: index.html");
