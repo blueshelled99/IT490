@@ -65,7 +65,7 @@ class RpcClient
                 //i think there should be a delivery mode persistent 
             )
         );
-        $this->channel->basic_publish($msg, 'DB-add', 'user-test');
+        $this->channel->basic_publish($msg, '', 'user-test');
         while (!$this->response) {
             $this->channel->wait();
         }
@@ -78,7 +78,7 @@ $hashed_password = password_hash($pass, PASSWORD_BCRYPT, $options);
 
 $rpc = new RpcClient();
 #$response = $rpc->call("$user,$pass");
-$response = $rpc->call("$user,$hashed_password");
+$response = $rpc->call("$email,$hashed_password");
 
 echo $response;
 #echo ' [.] Got ', $response, "\n";
