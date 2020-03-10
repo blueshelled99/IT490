@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<main>
+    <div class="Square">
+
+        <center><h1>Register</h1>
+            <form action ="regtest.php" method="post">
+                <table>
+                    <tr>
+                        <td>First name:</td>
+                        <td><input type="text" name="firstName" required minlength="1" maxlength="10"></td>
+                    </tr>
+                    <tr>
+                        <td>Last name:</td>
+                        <td><input type="text" name="lastName" required minlength="1" maxlength="10"></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td><input type="text" name="email" required minlength="3" maxlength="20"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password" minlength="3" maxlength="10" required></td>
+                    </tr>
+
+
+                </table>
+                <input type="submit" name="submit" value="Sign up"><br><br>
+            </form>
+        </center>
+
+
+    </div>
+
+</main>
+</body>
+</html>

@@ -3,11 +3,11 @@ import pika
 import time
 
 #change credentials and ip address if not using server
-credentials = pika.PlainCredentials('rabbitmq-test', 'test')
-parameters = pika.ConnectionParameters('192.168.1.48',
-                                    5672,
-                                    '/',
-                                    credentials)
+#credentials = pika.PlainCredentials('rabbitmq-test', 'test')
+#parameters = pika.ConnectionParameters('192.168.43.199',
+#                                    5672,
+#                                    '/',
+#                                    credentials)
 
 connection = pika.BlockingConnection(parameters)
 

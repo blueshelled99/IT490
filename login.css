@@ -1,0 +1,25 @@
+body{
+    font-family: "Times New Roman", "Microsoft Sans Serif";
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(215,215,227,1) 53%, rgba(0,212,255,1) 100%);
+    margin: 0 auto 0 auto;<!-- -->
+    width: 100%;
+    text-align: center;
+    margin: 250px 0px 250px 0px;
+}
+
+.Square{
+    background-color: aaa9ad;
+    width: 700px;
+    border-radius: 6px;
+    margin: 0 auto 0 auto;
+    padding: 0px 0px 100px 0px;
+    //border: silver 10px double;
+}
+
+.bmwm3{
+
+    border: black 10px double;
+    padding: 20px;
+background-color: #b8c6db;
+}

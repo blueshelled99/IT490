@@ -1,7 +1,7 @@
 sudo apt-get -y update
-sudo apt-get python3
-sudo apt-get python3-pip
-sudo python3 -m pip install pika
+sudo apt-get install python3
+sudo apt-get install python3-pip
+pip3 install pika
 wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add -
 echo "deb https://packages.erlang-solutions.com/ubuntu bionic contrib" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 sudo apt update
