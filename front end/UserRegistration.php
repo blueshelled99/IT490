@@ -17,11 +17,16 @@ require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
+//adding code for encryption here maybe
+$options = [ 'salt' => 'NaturalSpudPhenomenom' ];
+$hashed_password = password_hash($_POST['pass'], PASSWORD_BCRYPT, $options);	
+	
 $userSubmittal = array(
 	"firstName" => $_POST['firstName'],
 	"lastName" => $_POST['lastName'],
 	"email" => $_POST['email'],
-	"pass" => $_POST['pass']
+	"pass" => $hashed_password //comment this and uncomment the next line to get everything back to normal
+	//"pass" => $_POST['pass']
 );
 
 $msgJson = json_encode($userSubmittal);
