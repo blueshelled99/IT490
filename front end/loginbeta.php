@@ -92,7 +92,7 @@ echo $response;
 #echo ' [.] Got ', $response, "\n";
 
 //if ($response == "true"){ //we could change this later so that when we consume its a a string 'true'
-if ($response == true){
+if ($response == 'true'){
 	$_SESSION['logged_in'] = true;
     header("Location: user_home.php");
 }
