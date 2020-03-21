@@ -10,11 +10,12 @@ use PhpAmqpLib\Message\AMQPMessage;
 $options = [
 	'cost' => 12,
 ];
-$hashed_password = password_hash($_POST['pass'], PASSWORD_BCRYPT, $options);
+$hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
     
 $userSubmittal = array(
     "email" => $_POST['email'],
-    "password" => $hashed_password
+    //"password" => $hashed_password
+    "password" => $_POST['password']
 );
 
 $msgJson = json_encode($userSubmittal);
