@@ -18,10 +18,10 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
 //adding code for encryption here maybe
-/*$options = [
+$options = [
 	'cost' => 12,
 ];
-$hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);*/	
+$hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 	
 $userSubmittal = array(
 	"firstName" => $_POST['firstName'],
