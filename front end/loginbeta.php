@@ -1,24 +1,11 @@
 <?php
 session_start();
-
-header('Location: user_home.php');
-
 require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-$options = [
-	'cost' => 12,
-];
-$hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
-    
-$userSubmittal = array(
-    "email" => $_POST['email'],
-    //"password" => $hashed_password
-    "password" => $_POST['password']
-);
-
-$msgJson = json_encode($userSubmittal);
+$email = $_POST['email'];
+$pass = $_POST['password'];
 
 class RpcClient
 {
@@ -28,77 +15,89 @@ class RpcClient
     private $response;
     private $corr_id;
 
-    public function execute()
+    public function __construct()
     {
-        $connection = new AMQPStreamConnection('192.168.1.48', 5672, 'rabbitmq-test','test');
-        $channel = $connection->channel();
-        
-        list($callback_queue, ,) = $channel->queue_declare(
-            'user-test2', 
+        $this->connection = new AMQPStreamConnection(
+            '192.168.1.50', //***change ip address here
+            5672,
+            'rabbitmq-test',
+            'test'
+        );
+
+        $this->channel = $this->connection->channel();
+        list($this->callback_queue, ,) = $this->channel->queue_declare(
+            "user-test2",
             false,
             true,
             false,
             false
         );
-        
-        $channel->basic_consume(
-            $callback_queue,
-            '',
+        $this->channel->basic_consume(
+            $this->callback_queue,
+            "",
+            false,
+            true,
             false,
             false,
-            false,
-            false,
-            array($this,'onResponse')
+            array(
+                $this,
+                'onResponse'
+            )
         );
-        
-        $this->response = null;
-        
-        $this->corr-id = uniqid();
-        
-        $msg = new AMQPMessage(
-		    $msgJson,
-		    array('correlation_id' => $this->corr_id, 'reply_to' => $callback_queue)    
-			);
-        
-        $channel->basic_publish(
-			$msg,		 
-			'', 		
-			'user-test2'	
-			);
-		
-		while(!$this->response) {
-			$channel->wait();
-		}
-		
-		$channel->close();
-		$connection->close();
-		
-		return $this->response;
     }
 
-    public function onResponse(AMQPMessage $rep) {
-    	if($rep->get('correlation_id') == $this->corr_id) {
-			$this->response = $rep->body;
-		}
-	}
-    
-    //***anything after this is out of scope from the sitepoint tutorial
-    
+    public function onResponse($rep)
+    {
+        if ($rep->get('correlation_id') == $this->corr_id) {
+            $this->response = $rep->body;
+        }
+    }
+
+    public function call($n)
+    {
+        $this->response = null;
+        $this->corr_id = uniqid();
+
+        $msg = new AMQPMessage(
+            //(string) $n,
+	    $n,
+            array(
+                'correlation_id' => $this->corr_id,
+                'reply_to' => $this->callback_queue
+            )
+        );
+	$this->channel->basic_publish($msg, '', 'user-test2');
+        while (!$this->response) {
+            $this->channel->wait();
+        }
+        return ($this->response); //maybe initialize the type of variable here
+    }
 }
+
+$options = [
+	'salt' => 'VerySecureSalt', 
+	'cost' => 12,
+];
+
+$hashed_password = password_hash($pass, PASSWORD_BCRYPT, $options);
+
+$userSubmittal = array(
+	"email" => $_POST['email'],
+	"pass" => $_POST['password']
+);
+
+$msgJSON = json_encode($userSubmittal);
 
 $rpc = new RpcClient();
-$rpc->execute();
-//***$rpc->onResponse(); //maybe call this function here but i dont think you have to
-
+$response = $rpc->call($msgJSON);
 
 echo $response;
-#echo ' [.] Got ', $response, "\n";
 
-//if ($response == "true"){ //we could change this later so that when we consume its a a string 'true'
-if ($response == 'true'){
+if ($response == "true"){
 	$_SESSION['logged_in'] = true;
-    header("Location: user_home.php");
+	header("Location: user_home.php");
 }
+
 else{
 	$_SESSION['logged_in'] = false;
 	header("Location: index.html");
