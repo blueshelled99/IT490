@@ -7,7 +7,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-$options = [ 'salt' => 'NaturalSpudPhenomenom' ];
+$options = [
+	'cost' => 12,
+];
 $hashed_password = password_hash($_POST['pass'], PASSWORD_BCRYPT, $options);
     
 $userSubmittal = array(
