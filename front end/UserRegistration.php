@@ -39,11 +39,11 @@ $connection = new AMQPStreamConnection('192.168.1.240', 5672, 'rabbitmq-test', '
 
 $channel = $connection->channel();
 
-$channel -> queue_declare('user-test2', false, true, false, false);
+$channel -> queue_declare('register-queue', false, true, false, false);
 
 $msg = new AMQPMessage($msgJson);
 
-$channel->basic_publish($msg, '', 'user-test2');
+$channel->basic_publish($msg, '', 'register-queue');
 
 echo "[x] Sent form data!\n";
 
