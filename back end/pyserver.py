@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+
+#this is for testing login.php 
+
 import pika
 
 credentials = pika.PlainCredentials('rabbitmq-test', 'test')
@@ -11,7 +14,7 @@ connection = pika.BlockingConnection(parameters)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='user-test2', durable = True)
+channel.queue_declare(queue='login-queue', durable = True)
 
 
 def auth(n):
@@ -33,7 +36,7 @@ def on_request(ch, method, props, body):
 
 
 channel.basic_qos(prefetch_count=1)
-channel.basic_consume(queue='user-test2', on_message_callback=on_request)
+channel.basic_consume(queue='login-queue', on_message_callback=on_request)
 
 print(" [x] Awaiting RPC requests")
 channel.start_consuming()
