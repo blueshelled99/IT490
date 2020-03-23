@@ -26,7 +26,7 @@ class RpcClient
 
         $this->channel = $this->connection->channel();
         list($this->callback_queue, ,) = $this->channel->queue_declare(
-            "user-test2",
+            "login-queue",
             false,
             true,
             false,
@@ -66,7 +66,7 @@ class RpcClient
                 'reply_to' => $this->callback_queue
             )
         );
-	$this->channel->basic_publish($msg, '', 'user-test2');
+	$this->channel->basic_publish($msg, '', 'login-queue');
         while (!$this->response) {
             $this->channel->wait();
         }
