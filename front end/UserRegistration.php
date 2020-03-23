@@ -35,7 +35,7 @@ $msgJson = json_encode($userSubmittal);
 
 
 
-$connection = new AMQPStreamConnection('192.168.1.240', 5672, 'rabbitmq-test', 'test');
+$connection = new AMQPStreamConnection('192.168.1.50', 5672, 'rabbitmq-test', 'test'); //change ip address
 
 $channel = $connection->channel();
 
