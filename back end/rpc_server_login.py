@@ -38,7 +38,7 @@ def login_user(login_arguments):
 	
 
 credentials = pika.PlainCredentials('rabbitmq-test', 'test')
-parameters = pika.ConnectionParameters('192.168.1.48,
+parameters = pika.ConnectionParameters('192.168.1.48',
 			5672,
 			'/',
 			credentials)
