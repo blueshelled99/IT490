@@ -8,7 +8,7 @@ pip3 install pika
 sudo apt install vim
 sudo apt-get install mysql-server
 sudo netstat -tap | grep mysql
-sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql.service
 sudo mysql -u root password NOTweak$_@123!
 sudo mysql -u root
@@ -25,5 +25,6 @@ sudo mysql -u root
 #FLUSH PRIVILEGES;
 #CREATE DATABASE back_end_database;
 #USE back_end_database;
-#CREATE TABLE DB_members(username VARCHAR(20), password VARCHAR(20));
-#CREATE TABLE DB_add(username VARCHAR(20), password VARCHAR(20), firstname VARCHAR(20), lastname VARCHAR(20));
+#CREATE TABLE members(id INT AUTO_INCREMENT, username VARCHAR(20), password VARCHAR(20), firstname VARCHAR(20), lastname VARCHAR(20), PRIMARY KEY(id));
+#CREATE TABLE search_history(id INT AUTO_INCREMENT, history VARCHAR(6000));
+#GRANT ALL PRIVILEGES ON back_end_database.* to backendtest
