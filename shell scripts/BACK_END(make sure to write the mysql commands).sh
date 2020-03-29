@@ -10,14 +10,15 @@ sudo apt-get install mysql-server
 sudo netstat -tap | grep mysql
 sudo sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql.service
-sudo mysql -u root password NOTweak$_@123!
-sudo mysql -u root
-#UPDATE user set user = 'backendtest' WHERE user = 'root';
+
+###For SQL Setup###
+#sudo mysql
+#CREATE user 'backendtest' IDENTIFIED BY 'NOTweak$_@123!';
 #GRANT ALL PRIVILEGES ON *.* TO 'backendtest';
 #FLUSH PRIVILEGES;
 #exit
-#sudo mysql -u backendtest password NOTweak$_@123!
-#sudo mysql -u backendtest -p NOTweak$_@123!
+#mysql -u backendtest 
+#password: NOTweak$_@123!
 #CREATE USER 'dmztest' IDENTIFIED BY 'YesStrong!321@_$';
 #CREATE USER 'rabbitmqtest' IDENTIFIED BY 'Rabbitmq123!';
 #GRANT ALL PRIVILEGES ON *.* TO 'dmztest';
@@ -27,4 +28,4 @@ sudo mysql -u root
 #USE back_end_database;
 #CREATE TABLE members(id INT AUTO_INCREMENT, username VARCHAR(20), password VARCHAR(20), firstname VARCHAR(20), lastname VARCHAR(20), PRIMARY KEY(id));
 #CREATE TABLE search_history(id INT AUTO_INCREMENT, history VARCHAR(6000));
-#GRANT ALL PRIVILEGES ON back_end_database.* to backendtest
+#GRANT ALL PRIVILEGES ON back_end_database.* to backendtest;
