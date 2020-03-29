@@ -23,7 +23,7 @@ def register_user(registration_arguments):
 	d = c.split(', ')
 	
 	print(d)
-	addcredentialsquery = ("INSERT INTO members (id, firstname, lastname, email, password) VALUES (id, %s, %s, %s, %s);")
+	addcredentialsquery = ("INSERT INTO members (id, email, password, firstname, lastname) VALUES (id, %s, %s, %s, %s);")
 	cursor.execute(addcredentialsquery, d)
 	if cursor.rowcount:
 		print("true")
@@ -35,10 +35,8 @@ def register_user(registration_arguments):
 	cursor.close()
 	cnx.close()
 
-
-
-credentials = pika.PlainCredentials('rabbitmq-test', 'test')
-parameters = pika.ConnectionParameters('192.168.1.48',
+credentials = pika.PlainCredentials('rabbitmq-service', 'Team666!')
+parameters = pika.ConnectionParameters('10.0.0.7',
 			5672,
 			'/',
 			credentials)
@@ -58,19 +56,17 @@ def register_request(ch, method, props, body):
 	ch.basic_ack(delivery_tag=method.delivery_tag)
 
 def true_or_false(message):
-	credentials = pika.PlainCredentials('rabbitmq-test', 'test')
+	credentials = pika.PlainCredentials('rabbitmq-service', 'Team666!')
 
-	parameters = pika.ConnectionParameters('192.168.1.48', 
+	parameters = pika.ConnectionParameters('10.0.0.7', 
 					5672,   
 					'/',
-		                        credentials)
+                    credentials)
 										
 	connection = pika.BlockingConnection(parameters)
 	channel = connection.channel()
 	channel.queue_declare(queue='register-queue', durable=True)
-
 	channel.basic_publish(exchange='', routing_key='', body=message)
-
 	print(" [x] Sent " + message)
 	connection.close()
 

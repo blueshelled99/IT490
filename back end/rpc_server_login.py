@@ -37,8 +37,8 @@ def login_user(login_arguments):
 	cnx.close()
 	
 
-credentials = pika.PlainCredentials('rabbitmq-test', 'test')
-parameters = pika.ConnectionParameters('192.168.1.48',
+credentials = pika.PlainCredentials('rabbitmq-service', 'Team666!')
+parameters = pika.ConnectionParameters('10.0.0.7',
 			5672,
 			'/',
 			credentials)
@@ -59,13 +59,12 @@ def login_request(ch, method, props, body):
 	ch.basic_ack(delivery_tag=method.delivery_tag)
 
 def true_or_false(message):
-	credentials = pika.PlainCredentials('rabbitmq-test', 'test')
+	credentials = pika.PlainCredentials('rabbitmq-service', 'Team666!')
 
-	parameters = pika.ConnectionParameters('192.168.1.48', 
-					5672,   
+	parameters = pika.ConnectionParameters('10.0.0.7', 
+					5672,
 					'/',
-		                        credentials)
-										
+                    credentials)				
 	connection = pika.BlockingConnection(parameters)
 	channel = connection.channel()
 	channel.queue_declare(queue='login-queue', durable=True)

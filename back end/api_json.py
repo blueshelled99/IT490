@@ -18,10 +18,8 @@ def store(url):
 	z = y[1]
 	print (z)
 	name = str(z)
-	
 
-	cnx = mysql.connector.connect(user='backendtest', password='NOTweak$_@123!', host='localhost', port='3306', 	
-		database='back_end_database')
+	cnx = mysql.connector.connect(user='backendtest', password='NOTweak$_@123!', host='localhost', port='3306', database='back_end_database')
 	cursor = cnx.cursor(buffered = True)
 
 	historyquery = ("INSERT INTO search_history (id, history) VALUES (id, '" + name + "');")
@@ -37,8 +35,8 @@ def store(url):
 	cursor.close()
 	cnx.close()
 
-credentials = pika.PlainCredentials('rabbitmq-test', 'test')
-parameters = pika.ConnectionParameters('192.168.1.48',
+credentials = pika.PlainCredentials('rabbitmq-service', 'Team666!')
+parameters = pika.ConnectionParameters('10.0.0.7',
 			5672,
 			'/',
 			credentials)
