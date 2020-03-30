@@ -18,10 +18,10 @@ class RpcClient
     public function __construct()
     {
         $this->connection = new AMQPStreamConnection(
-            '192.168.1.50', //change ip address here
+            '10.0.0.7', //change ip address here
             5672,
-            'rabbitmq-test',
-            'test'
+            'rabbitmq-service',
+            'Team666!'
         );
 
         $this->channel = $this->connection->channel();
