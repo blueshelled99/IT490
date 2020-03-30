@@ -26,6 +26,6 @@ sudo systemctl restart mysql.service
 #FLUSH PRIVILEGES;
 #CREATE DATABASE back_end_database;
 #USE back_end_database;
-#CREATE TABLE members(id INT AUTO_INCREMENT, username VARCHAR(20), password VARCHAR(20), firstname VARCHAR(20), lastname VARCHAR(20), PRIMARY KEY(id));
+#CREATE TABLE members(id INT AUTO_INCREMENT, firstname VARCHAR(20), lastname VARCHAR(20), email VARCHAR(20), password VARCHAR(20), PRIMARY KEY(id));
 #CREATE TABLE search_history(id INT AUTO_INCREMENT, history VARCHAR(6000));
 #GRANT ALL PRIVILEGES ON back_end_database.* to backendtest;
