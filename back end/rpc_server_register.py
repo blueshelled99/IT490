@@ -23,7 +23,7 @@ def register_user(registration_arguments):
 	d = c.split(', ')
 	
 	print(d)
-	addcredentialsquery = ("INSERT INTO members (id, email, password, firstname, lastname) VALUES (id, %s, %s, %s, %s);")
+	addcredentialsquery = ("INSERT INTO members (id, firstname, lastname, email, password) VALUES (id, %s, %s, %s, %s);")
 	cursor.execute(addcredentialsquery, d)
 	if cursor.rowcount:
 		print("true")
