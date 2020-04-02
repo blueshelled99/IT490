@@ -18,17 +18,15 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
 //adding code for encryption here maybe
-$options = [
-	'cost' => 12,
-];
+$options = [ 'salt' => 'seasalt_icecream123456' ];
 $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 	
 $userSubmittal = array(
 	"firstName" => $_POST['firstName'],
 	"lastName" => $_POST['lastName'],
 	"email" => $_POST['email'],
-	//"pass" => $hashed_password //comment this and uncomment the next line to get everything back to normal
-	"pass" => $_POST['password']
+	"pass" => $hashed_password //comment this and uncomment the next line to get everything back to normal
+	//"pass" => $_POST['password']
 );
 
 $msgJson = json_encode($userSubmittal);
