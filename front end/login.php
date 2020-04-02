@@ -74,16 +74,12 @@ class RpcClient
     }
 }
 
-$options = [
-	'salt' => 'VerySecureSalt', 
-	'cost' => 12,
-];
-
+$options = [ 'salt' => 'seasalt_icecream123456' ];
 $hashed_password = password_hash($pass, PASSWORD_BCRYPT, $options);
 
 $userSubmittal = array(
 	"email" => $_POST['email'],
-	"pass" => $_POST['password']
+	"pass" => $hashed_password
 );
 
 $msgJSON = json_encode($userSubmittal);
