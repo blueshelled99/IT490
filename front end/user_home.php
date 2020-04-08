@@ -5,6 +5,9 @@ if (! $_SESSION['logged_in']) {
 	header("Location: index.html");
 }
 
+$email = $_POST['email'];
+$pass = $_POST['password'];
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,9 @@ if (! $_SESSION['logged_in']) {
         <div class="Square">
 
         <center><h1>Home</h1>
-		<h2>What would you like to do?</h2>
+		<h2>Welcome, $email</h2>
+		<br>
+		<h2>What would you like to do?<h2>
         <br>
             
         </center>
