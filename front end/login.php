@@ -89,6 +89,8 @@ $response = $rpc->call($msgJSON);
 
 echo $response;
 
+$_SESSION['email'] = $email;
+
 if ($response == "true"){
 	$_SESSION['logged_in'] = true;
 	header("Location: user_home.php");
