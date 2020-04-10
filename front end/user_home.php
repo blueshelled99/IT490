@@ -1,7 +1,11 @@
 <?php
-session_start();if (! $_SESSION['logged_in']) {
+session_start();
+
+if (! $_SESSION['logged_in']) {
 	header("Location: index.html");
-}$user = $_SESSION['email'];
+}
+
+$user = $_SESSION['email'];
 //echo "<h1>$user</h1>";
 
 ?>
@@ -14,22 +18,30 @@ session_start();if (! $_SESSION['logged_in']) {
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<main>        
-	<div class="Square">        
-	<center><h1>Home</h1>
+<main> 
+   
+        <div class="Square">
+
+        <center><h1>Home</h1>
 		<h2>What would you like to do?</h2>
         <br>
 	<h1><?php echo $user; ?></h1>
-	<form action ="" method="post">
-                <table>
-                    <tr>
-                        <td>E-mail:</td>
-                        <td><input type="text" id="email" name="email" required minlength="3" maxlength="20" value="<?php echo $user; ?>" readonly></td> <!-- you should add the hidden attribute to the input tag here -->
-		    </tr>              
-		</table>
-                <input type="submit" name="submit" value="submit query">
-	</form>    
-	</div>
+	<form action="query.php" method="get">
+			<input type="text" id="email" name="email" required minlength="3" maxlength="20" value="<?php echo $user; ?>" readonly hidden>
+			<select id="function" name="function">
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+			</select>
+			<select id="candidate" name="candidate">
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+                <input type="submit">
+	</form>
+       
+    </div>
 </main>
 </body>
 </html>
