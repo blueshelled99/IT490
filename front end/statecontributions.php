@@ -60,7 +60,7 @@ google.setOnLoadCallback(drawStatesMap);
   <body>
     <h1>Here you go, <?php echo $_SESSION['email'] ?></h1>
     <br>
-    <h1>OpenFEC's Top 100 Presidential Contributions by State</h1>
+    <h1>OpenFEC's Top 100 Presidential Contributions by State for 2020</h1>
     <div id="chart_div" style="width: 900px; height: 500px;" ></div>
   </body>
 </html>
