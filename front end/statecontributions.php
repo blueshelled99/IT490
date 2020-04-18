@@ -53,7 +53,7 @@ $connection->close();
               $("h3").append(" Sorted by  "+dimension);
             });
     }
-google.load('visualization', '1', {'packages': ['geochart']});
+google.charts.load('current', {'packages':['corechart']});
 google.setOnLoadCallback(drawStatesMap);
     </script>
   </head>
