@@ -4,6 +4,8 @@
 	$candidate = $_GET["candidate"];
 
 	$query = $email.$function.$candidate;
+
+	$api_key="r6K96zZiE3CiSz10AhkCh0EGSpKNbxmDYD4osUAN";
 ?>
 
 <!DOCTYPE html>
