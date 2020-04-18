@@ -23,11 +23,12 @@ $user = $_SESSION['email'];
         <div class="Square">
 
         <center><h1>Home</h1>
-		<h2>What would you like to do?</h2>
-        <br>
-	<h1><?php echo $user; ?></h1>
-	<form action="query.php" method="get">
-			<input type="text" id="email" name="email" required minlength="3" maxlength="20" value="<?php echo $user; ?>" readonly hidden>
+		<h1>Welcome, <?php echo $_SESSION['email'] ?></h1>
+	<h2>What would you like to do?</h2>
+	<a href="statecontributions.php">OpenFEC's Top 100 Presidential Contributions by State</a>
+	<br><br>
+	<form action="query.php" method="get" hidden>
+			<input type="text" id="email" name="email" required minlength="3" maxlength="20" value="<?php echo $_SESSION['email']; ?>" readonly hidden>
 			<select id="function" name="function">
 				<option value=1>1</option>
 				<option value=2>2</option>
