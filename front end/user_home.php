@@ -25,7 +25,9 @@ $user = $_SESSION['email'];
         <center><h1>Home</h1>
 		<h1>Welcome, <?php echo $_SESSION['email'] ?></h1>
 	<h2>What would you like to do?</h2>
-	<a href="statecontributions.php">OpenFEC's Top 100 Presidential Contributions by State</a>
+	<a href="statecontributions.php">OpenFEC's Top 100 Presidential Contributions by State for 2020</a>
+	<br>
+	<a href="piecharts.php">OpenFEC's Candidates Aggregated Candidate Receipts and Disbursements Grouped by Office for 2020</a>
 	<br><br>
 	<form action="query.php" method="get" hidden>
 			<input type="text" id="email" name="email" required minlength="3" maxlength="20" value="<?php echo $_SESSION['email']; ?>" readonly hidden>
