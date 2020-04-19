@@ -43,7 +43,7 @@ $msg = new AMQPMessage($msgJson);
 
 $channel->basic_publish($msg, '', 'register-queue');
 
-echo "[x] Sent form data!\n";
+echo "Account was registered";
 
 $channel->close();
 $connection->close();
