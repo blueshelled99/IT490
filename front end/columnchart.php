@@ -48,7 +48,7 @@ $connection->close();
                         receiptArray.push(item);
                     });
               var receiptData = google.visualization.arrayToDataTable(receiptArray);
-              var chart = new google.visualization.ColumnChart(document.getElementById('chart')); //make sure to change chart type if you are doing another type
+              var chart = new google.visualization.ColumnChart(document.getElementById('chart_div')); //make sure to change chart type if you are doing another type
               chart.draw(receiptData, options);
             });
     }
@@ -63,7 +63,7 @@ google.setOnLoadCallback(columndraw); //call the function here, in this case pie
     <h1>Here you go, <?php echo $_SESSION['email'] ?></h1>
     <br>
     <h1>OpenFEC's Candidate Contribution Receipts by Candidate for 2020</h1>
-    <div id="chart" style="width: 900px; height: 500px;" ></div>
+    <div id="chart_div" style="width: 900px; height: 500px;" ></div>
     <br>
     
   </body>
