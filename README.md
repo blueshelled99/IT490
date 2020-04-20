@@ -1,11 +1,11 @@
 # IT490: OpenFecData.com: Charts from Queries
 
 - [Abstract](https://github.com/blueshelled99/IT490#abstract)
-- [General Setup](https://gitbub.com/blueshelled99/IT490#general-setup)
+- [General Setup](https://github.com/blueshelled99/IT490#general-setup)
 - [Initial Setup: Shell Scripts](https://github.com/blueshelled99/IT490#initial-setup-shell-scripts)
-- [RabbitMQ](https://gitbub.com/blueshelled99/IT490#rabbitmq)
-- [Front End](https://gitbub.com/blueshelled99/IT490#front-end)
-- [Back End](https://gitbub.com/blueshelled99/IT490#back-end)
+- [RabbitMQ](https://github.com/blueshelled99/IT490#rabbitmq)
+- [Front End](https://github.com/blueshelled99/IT490#front-end)
+- [Back End](https://github.com/blueshelled99/IT490#back-end)
 
 ## Abstract
 
