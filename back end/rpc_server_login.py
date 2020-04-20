@@ -15,19 +15,8 @@ connection = pika.BlockingConnection(parameters)
 
 channel = connection.channel()
 
-channel.exchange_declare(exchange='Login-Exchange', exchange_type='direct')
+channel.queue_declare(queue='login-queue', durable = True)
 
-result = channel.queue_declare(queue='', durable = True)
-queue_name = result.method.queue
-
-severities = sys.argv[1:]
-if not severities:
-    sys.stderr.write("Usage: %s [info] [warning] [error]\n" % sys.argv[0])
-    sys.exit(1)
-
-for severity in severities:
-    channel.queue_bind(
-        exchange='Login-Exchange', queue=queue_name, routing_key=severity)
 
 def auth(n):
 	cnx = mysql.connector.connect(user='backendtest', password='NOTweak$_@123!', host='localhost', port='3306', database='back_end_database')
@@ -66,7 +55,7 @@ def on_request(ch, method, props, body):
 
 
 channel.basic_qos(prefetch_count=1)
-channel.basic_consume(queue=queue_name, on_message_callback=on_request)
+channel.basic_consume(queue='login-queue', on_message_callback=on_request)
 
 print(" [x] Awaiting login requests")
 channel.start_consuming()

@@ -43,11 +43,13 @@ parameters = pika.ConnectionParameters('10.0.0.7',
 connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
 
+channel.queue_declare(queue='register-queue', durable=True)
+
 def register_request(ch, method, props, body):
 	n = json.loads(body)	
 	response = register_user(n)
-	ch.basic_publish(exchange='Registration-Exchange',
-			routing_key='send-user-registration',
+	ch.basic_publish(exchange='',
+			routing_key='',
 			properties=pika.BasicProperties(correlation_id = \
 							props.correlation_id),
 			body=str(response))
@@ -63,12 +65,12 @@ def true_or_false(message):
 										
 	connection = pika.BlockingConnection(parameters)
 	channel = connection.channel()
-	
-	channel.basic_publish(exchange='Registration-Exchange', routing_key='send-user-registration', body=message)
+	channel.queue_declare(queue='register-queue', durable=True)
+	channel.basic_publish(exchange='', routing_key='', body=message)
 	print(" [x] Sent " + message)
 	connection.close()
 
 channel.basic_qos(prefetch_count=1)
-channel.basic_consume(queue='login-queue', on_message_callback=register_request)
+channel.basic_consume(queue='register-queue', on_message_callback=register_request)
 print(" [x] Awaiting registration requests")
 channel.start_consuming()
