@@ -23,7 +23,7 @@ class RpcClient
             'rabbitmq-service',
             'Team666!'
         );
-
+#We are declaring a queue here. We probably want to declare an Exchange. I dunno how on PHP atm - NR | 4.19.20
         $this->channel = $this->connection->channel();
         list($this->callback_queue, ,) = $this->channel->queue_declare(
             "login-queue",
@@ -66,7 +66,7 @@ class RpcClient
                 'reply_to' => $this->callback_queue
             )
         );
-	$this->channel->basic_publish($msg, '', 'login-queue');
+	$this->channel->basic_publish($msg, 'Login-Exchange', 'send-user-login');
         while (!$this->response) {
             $this->channel->wait();
         }
