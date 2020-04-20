@@ -46,8 +46,8 @@ def on_request(ch, method, props, body):
     print(n)
     response = auth(n)
     print(" [x] Sent " + response)
-    ch.basic_publish(exchange='',
-                     routing_key=props.reply_to,
+    ch.basic_publish(exchange='Login-Exchange',
+                     routing_key='send-user-login',
                      properties=pika.BasicProperties(correlation_id = \
                                                          props.correlation_id),
                      body=str(response))
@@ -59,3 +59,4 @@ channel.basic_consume(queue='login-queue', on_message_callback=on_request)
 
 print(" [x] Awaiting login requests")
 channel.start_consuming()
+

@@ -48,8 +48,8 @@ channel.queue_declare(queue='register-queue', durable=True)
 def register_request(ch, method, props, body):
 	n = json.loads(body)	
 	response = register_user(n)
-	ch.basic_publish(exchange='',
-			routing_key='',
+	ch.basic_publish(exchange='Registration-Exchange',
+			routing_key='send-user-registration',
 			properties=pika.BasicProperties(correlation_id = \
 							props.correlation_id),
 			body=str(response))
@@ -66,7 +66,7 @@ def true_or_false(message):
 	connection = pika.BlockingConnection(parameters)
 	channel = connection.channel()
 	channel.queue_declare(queue='register-queue', durable=True)
-	channel.basic_publish(exchange='', routing_key='', body=message)
+	channel.basic_publish(exchange='Registration-Exchange', routing_key='send-user-registration', body=message)
 	print(" [x] Sent " + message)
 	connection.close()
 
