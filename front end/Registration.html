@@ -14,24 +14,31 @@
                 <table>
                     <tr>
                         <td>First name:</td>
-                        <td><input type="text" name="firstName" required minlength="1" maxlength="100"></td>
+                        <td><input type="text" name="firstName" required minlength="1" maxlength="10"></td>
                     </tr>
                     <tr>
                         <td>Last name:</td>
-                        <td><input type="text" name="lastName" required minlength="1" maxlength="100"></td>
+                        <td><input type="text" name="lastName" required minlength="1" maxlength="10"></td>
                     </tr>
                     <tr>
                         <td>E-mail:</td>
-                        <td><input type="text" name="email" required minlength="3" maxlength="255"></td>
+                        <td><input type="text" name="email" required minlength="3" maxlength="40"></td>
                     </tr>
                     <tr>
                         <td>Password:</td>
-                        <td><input type="password" name="password" minlength="3" maxlength="255" required></td>
+                        <td><input type="password" name="password" minlength="3" maxlength="40" required></td>
                     </tr>
 
 
                 </table>
-                <input type="submit" name="submit" value="Sign up"><br><br>
+                <!-- <input type="submit" name="submit" value="Sign up"><br><br>-->
+                <button onclick="myFunction()">Sign Up</button>
+
+<script>
+function myFunction() {
+  alert("Account was registered! Return to previous page to login.");
+}
+</script>
             </form>
         </center>
 
@@ -41,3 +48,6 @@
 </main>
 </body>
 </html>
+
+
+
