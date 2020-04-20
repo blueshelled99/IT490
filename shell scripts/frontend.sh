@@ -13,7 +13,6 @@ sudo chmod -R 777 /var/www/html
 cd~ 
 sudo apt-get install php -y
 sudo apt-get install python3-virtualenv
-sudo apt install virtualenv
 virtualenv --version
 mkdir flask-application
 cd flask-application
