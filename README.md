@@ -21,7 +21,9 @@ Make sure to read/run the shell scripts to have all the dependencies needed to r
 Read the comments as sometimes you may need to type out the command as well or change a line of code to suit your environment.
 
 for rabbitmq machine just run the rabbitmq-server.sh shell script
+
 for front-end machine run the php.sh and front-end.sh(if this shell script then use the other one that says to change line 12) shell scripts
+
 for the back-end machine just run the back-end.sh shell script
 
 ## RabbitMQ
