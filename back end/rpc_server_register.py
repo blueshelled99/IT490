@@ -69,6 +69,6 @@ def true_or_false(message):
 	connection.close()
 
 channel.basic_qos(prefetch_count=1)
-channel.basic_consume(exchange='Registration-Exchange', routing_key='send-user-registration', on_message_callback=register_request)
+channel.basic_consume(queue='login-queue', on_message_callback=register_request)
 print(" [x] Awaiting registration requests")
 channel.start_consuming()
