@@ -43,9 +43,8 @@ $msg = new AMQPMessage($msgJson);
 $channel->basic_publish($msg, 'Registration-Exchange', 'send-user-registration');
 
 #Echo result
-#echo "Account was registered. Return to previous page to login.";
-echo $response;
-header ("Location: index.html");
+echo "Account was registered. Return to previous page to login.";
+echo "<a href="index.html">Return to Home Page to login</a>"
 
 #Close connection
 $channel->close();
