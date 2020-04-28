@@ -15,7 +15,7 @@ connection = pika.BlockingConnection(parameters)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='login-queue-response', durable = True)
+channel.queue_declare(queue='login-queue', durable = True)
 
 
 def auth(n):
@@ -47,7 +47,7 @@ def on_request(ch, method, props, body):
     response = auth(n)
     print(" [x] Sent " + response)
     ch.basic_publish(exchange='Login-Exchange',
-                     routing_key='login-response',
+                     routing_key='send-user-login',
                      properties=pika.BasicProperties(correlation_id = \
                                                          props.correlation_id),
                      body=str(response))
