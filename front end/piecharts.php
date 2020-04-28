@@ -19,11 +19,12 @@ $connection = new AMQPStreamConnection('10.0.0.7', 5672, 'rabbitmq-service', 'Te
 
 $channel = $connection->channel();
 
-$channel -> queue_declare('totals_by_office_query_queue', false, true, false, false);
+//$channel -> queue_declare('totals_by_office_query_queue', false, true, false, false);
+//redundant when using exchanges
 
 $msg = new AMQPMessage($msgJson);
 
-$channel->basic_publish($msg, '', 'totals_by_office_query_queue');
+$channel->basic_publish($msg, 'API-Exchange', 'send-api');
 
 $channel->close();
 $connection->close();
