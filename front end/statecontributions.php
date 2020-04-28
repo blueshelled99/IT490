@@ -19,11 +19,12 @@ $connection = new AMQPStreamConnection('10.0.0.7', 5672, 'rabbitmq-service', 'Te
 
 $channel = $connection->channel();
 
-$channel -> queue_declare('contribution_query_queue', false, true, false, false);
+//$channel -> queue_declare('contribution_query_queue', false, true, false, false);
+//redudant when it comes to using exchanges
 
 $msg = new AMQPMessage($msgJson);
 
-$channel->basic_publish($msg, '', 'contribution_query_queue');
+$channel->basic_publish($msg, 'API-Exchange', 'send-api');
 
 $channel->close();
 $connection->close();
