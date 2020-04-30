@@ -4,12 +4,12 @@ import mysql.connector.errors
 import pika
 import json
 
-cnx = mysql.connector.connect(user='backendtest', password='NOTweak$_@123!', host='localhost', port='3306', 	
+cnx = mysql.connector.connect(user='backendtest', password='NOTweak$_@123!', host='localhost', port='3306',		
 	database='back_end_database')
 cursor = cnx.cursor(buffered = True)
 
 def register_user(registration_arguments):
-	cnx = mysql.connector.connect(user='backendtest', password='NOTweak$_@123!', host='localhost', port='3306', 	
+	cnx = mysql.connector.connect(user='backendtest', password='NOTweak$_@123!', host='localhost', port='3306',		
 	database='back_end_database')
 	cursor = cnx.cursor(buffered = True)
 	value_list = list()
@@ -59,18 +59,27 @@ def true_or_false(message):
 	credentials = pika.PlainCredentials('rabbitmq-service', 'Team666!')
 
 	parameters = pika.ConnectionParameters('10.0.0.7', 
-					5672,   
+					5672,	
 					'/',
-                    credentials)
+					credentials)
 										
 	connection = pika.BlockingConnection(parameters)
 	channel = connection.channel()
 	channel.queue_declare(queue='register-queue', durable=True)
 	channel.basic_publish(exchange='Registration-Exchange', routing_key='send-user-registration', body=message)
 	print(" [x] Sent " + message)
+	
 	connection.close()
 
-channel.basic_qos(prefetch_count=1)
-channel.basic_consume(queue='register-queue', on_message_callback=register_request)
-print(" [x] Awaiting registration requests")
-channel.start_consuming()
+while True:
+	try:	
+		channel.queue_purge(queue='register-queue')
+		channel.basic_qos(prefetch_count=1)
+		channel.basic_consume(queue='register-queue', on_message_callback=register_request)
+
+		print(" [x] Awaiting registration requests")
+		channel.start_consuming()
+	except AttributeError:
+		pass
+		continue
+		
