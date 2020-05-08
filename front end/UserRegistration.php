@@ -83,7 +83,7 @@ class RpcClient
 }
 
 $options = [ 'salt' => 'seasalt_icecream123456' ];
-$hashed_password = password_hash($pass, PASSWORD_BCRYPT, $options);
+$hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 	
 #POST Data
 $userSubmittal = array(
