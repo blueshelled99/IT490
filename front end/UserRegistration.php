@@ -82,7 +82,8 @@ class RpcClient
     }
 }
 
-$options = [ 'salt' => 'seasalt_icecream123456' ];
+#use a salt that is 22 characters long or whatever this salt's length is
+$options = [ 'salt' => 'seasalt_icecream123456' ]; 
 $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 	
 #POST Data
